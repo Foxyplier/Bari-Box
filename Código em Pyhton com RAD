@@ -1,0 +1,88 @@
+import tkinter as tk
+from tkinter import messagebox
+
+class BariBoxApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Bari Box")
+        
+        # Criando a barra de navegação
+        self.create_navigation_bar()
+        
+        # Criando os botões de BOX
+        self.create_box_buttons()
+        
+        # Criando opção de login
+        self.create_login_option()
+        
+        # Criando carrinho para compras
+        self.create_shopping_cart()
+        
+        # Criando chat
+        self.create_chat()
+        
+    def create_navigation_bar(self):
+        # Frame para a barra de navegação
+        self.nav_frame = tk.Frame(self.root)
+        self.nav_frame.pack(side=tk.TOP, fill=tk.X)
+        
+        # Botões da barra de navegação
+        nav_items = ["HOME", "BOX", "SOBRE NÓS", "FAQ", "FALE CONOSCO"]
+        for item in nav_items:
+            button = tk.Button(self.nav_frame, text=item, padx=10, pady=5)
+            button.pack(side=tk.LEFT, padx=5)
+        
+    def create_box_buttons(self):
+        # Frame para os botões BOX
+        self.box_frame = tk.Frame(self.root)
+        self.box_frame.pack(pady=20)
+        
+        # Botões BOX
+        box_items = ["BOX 1", "BOX 2", "BOX 3"]
+        for item in box_items:
+            button = tk.Button(self.box_frame, text=item, padx=20, pady=10, command=lambda i=item: self.box_action(i))
+            button.pack(side=tk.LEFT, padx=10)
+    
+    def create_login_option(self):
+        # Frame para a opção de login
+        self.login_frame = tk.Frame(self.root)
+        self.login_frame.pack(pady=10)
+        
+        # Botão de login
+        login_button = tk.Button(self.login_frame, text="Login", padx=20, pady=10, command=self.login_action)
+        login_button.pack(side=tk.LEFT, padx=10)
+        
+    def create_shopping_cart(self):
+        # Frame para o carrinho de compras
+        self.cart_frame = tk.Frame(self.root)
+        self.cart_frame.pack(pady=10)
+        
+        # Botão do carrinho de compras
+        cart_button = tk.Button(self.cart_frame, text="Carrinho", padx=20, pady=10, command=self.cart_action)
+        cart_button.pack(side=tk.LEFT, padx=10)
+        
+    def create_chat(self):
+        # Frame para o chat
+        self.chat_frame = tk.Frame(self.root)
+        self.chat_frame.pack(pady=20)
+        
+        # Botão do chat
+        chat_button = tk.Button(self.chat_frame, text="Chat", padx=20, pady=10, command=self.chat_action)
+        chat_button.pack(side=tk.LEFT, padx=10)
+    
+    def box_action(self, box_number):
+        messagebox.showinfo("Bari Box", f"Ação do {box_number}")
+        
+    def login_action(self):
+        messagebox.showinfo("Login", "Implementar funcionalidade de login")
+        
+    def cart_action(self):
+        messagebox.showinfo("Carrinho", "Implementar funcionalidade de carrinho de compras")
+        
+    def chat_action(self):
+        messagebox.showinfo("Chat", "Implementar funcionalidade de chat")
+        
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = BariBoxApp(root)
+    root.mainloop()
